@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author nam.nd
@@ -16,7 +17,8 @@ import javax.persistence.*;
 @Setter
 @Data
 @Table(name = "student")
-public class Student {
+public class Student implements Serializable {
+    private static final long serialVersionUID = 7156526077883281623L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

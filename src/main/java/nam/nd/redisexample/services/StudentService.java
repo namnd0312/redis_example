@@ -11,9 +11,11 @@ import java.util.Optional;
  */
 public interface StudentService {
 
-    void saveStudent(Student student);
+    Student saveStudent(Student student);
 
     Optional<Student> findOne(Long id);
 
     List<Student> findAllStudents();
+
+    void deleteStudentById(long id);
 }
