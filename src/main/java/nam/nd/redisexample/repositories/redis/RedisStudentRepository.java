@@ -1,5 +1,6 @@
-package nam.nd.redisexample.repositories;
+package nam.nd.redisexample.repositories.redis;
 
+import nam.nd.redisexample.dtos.StudentDto;
 import nam.nd.redisexample.models.Student;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -13,22 +14,23 @@ import java.util.List;
  */
 
 @Repository
-public class RedisUserRepository {
+public class RedisStudentRepository {
     private HashOperations hashOperations;
 
     private RedisTemplate redisTemplate;
 
     private static final String STUDENT_TABLE = "student";
 
-    public RedisUserRepository(RedisTemplate redisTemplate){
+    public RedisStudentRepository(RedisTemplate redisTemplate){
         this.redisTemplate = redisTemplate;
         this.hashOperations = this.redisTemplate.opsForHash();
     }
 
-    public void save(Student user){
+    public void save(StudentDto user){
         hashOperations.put(STUDENT_TABLE, user.getId(), user);
     }
-    public List findAll(){
+
+    public List<StudentDto> findAll(){
         return hashOperations.values(STUDENT_TABLE);
     }
 
@@ -36,7 +38,7 @@ public class RedisUserRepository {
         return (Student) hashOperations.get(STUDENT_TABLE, id);
     }
 
-    public void update(Student student){
+    public void update(StudentDto student){
         save(student);
     }
 

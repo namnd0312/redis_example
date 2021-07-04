@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.Instant;
 
 /**
  * @author nam.nd
@@ -35,4 +36,6 @@ public class Student implements Serializable {
     private String email;
 
     private Long classId;
+
+    private Instant timeUpdate;
 }

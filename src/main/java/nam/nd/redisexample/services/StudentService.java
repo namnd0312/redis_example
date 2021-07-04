@@ -1,5 +1,6 @@
 package nam.nd.redisexample.services;
 
+import nam.nd.redisexample.dtos.StudentDto;
 import nam.nd.redisexample.models.Student;
 
 import java.util.List;
@@ -11,9 +12,11 @@ import java.util.Optional;
  */
 public interface StudentService {
 
-    Student saveStudent(Student student);
+    Student createStudent(StudentDto dto);
 
-    Optional<Student> findOne(Long id);
+    Student updateStudent(StudentDto dto) throws Exception;
+
+    StudentDto findOne(Long id);
 
     List<Student> findAllStudents();
 
